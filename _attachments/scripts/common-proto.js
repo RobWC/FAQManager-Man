@@ -3,7 +3,7 @@ var databaseName = 'faqman';
 var dataName = 'faq';
 
 function Category(categoryName) {
-	if (!!name) {
+	if (!!categoryName) {
 		this.categoryName = categoryName;
 	} else {
 		this.categoryName = '';
@@ -36,6 +36,7 @@ Category.prototype = {
          			success: function(data,statusText,jqXHR){
          				self._rev = data.rev;
         				console.log(data);
+        				console.log(self);
         				//create view
         				var newView = new Object();
         				newView._id = '_design/' + self.categoryName.toLowerCase();

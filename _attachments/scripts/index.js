@@ -118,14 +118,19 @@ $(document).ready(function() {
     						//fail
     					}
     				};
-    				var newCat = Category(catName);
-    				newCat.saveNew();
+    				var options = new Object();
+    				options.callback = function() {
+    	                $('#category-save-dialog').dialog("open");
+    				};
+    				var newCat = new Category(catName);
+    				newCat.saveNew(options);
     			} else {
     				//show error to enter name
     			}
     			//save category
     			
     			//popup save successful
+    			return false;
     		},
     		"Cancel": function(){
     			$(this).dialog('close');

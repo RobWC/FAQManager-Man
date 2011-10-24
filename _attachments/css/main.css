@@ -3,7 +3,7 @@ body, html {
     margin:0;
     padding:0;
     color:#000;
-    /*background:#a7a09a;*/
+    background: #DCDCDC;
     overflow: hidden;
 }
 #header {
@@ -41,17 +41,22 @@ body, html {
     padding: 5px;
 }
 #mylogin {
-	float: right;
+    float: right;
 }
 #mylogin a {
-	   color: #FFFFFF;
-	
+	padding-top:20px;
+	padding-right: 10px;
+	color: #FFFFFF;
 }
 #search-area {
 	padding-top: 10px;
 }
 .search-text {
        color: #FFFFFF;
+}
+#username {
+	font-size: 14px;
+	color: #FFFFFF;
 }
 #scroll-content {
 	position: fixed;
@@ -62,7 +67,6 @@ body, html {
 	position: fixed;
 }
 #div-aside-panel {
-    margin-top: 10px;
     border-top: 1px solid #496176;
     border-bottom: 1px solid #2E4958;
     padding: 5px;
