@@ -227,7 +227,7 @@ var FAQ = {
         $('#scrollie').fadeOut('slow',function(){
             $('#scrollie').empty();
             $('#scrollie').fadeIn();
-            $('#scroll-content').height($(window).height());
+            $('#scroll-content').height($(window).height() - 60);
             $('#scroll-content').toggleClass('overflow');
         });
         $('#query').val('');
@@ -278,7 +278,7 @@ var FAQ = {
                         	//overflow is enabled do nothing
                         } else {
                         	//enable overflow
-                        	$('#scroll-content').height($(window).height());
+                        	$('#scroll-content').height($(window).height() - 60);
                             $('#scroll-content').toggleClass('overflow');
                         }
                     }
