@@ -54,7 +54,7 @@ body, html {
 .search-text {
        color: #FFFFFF;
 }
-#username {
+span#username {
 	font-size: 14px;
 	color: #FFFFFF;
 }
