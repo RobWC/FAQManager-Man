@@ -170,6 +170,13 @@ var FAQ = {
     		if ($('#category-dialog').dialog('isOpen')) {
                 $('#category-dialog').dialog('close');
             };
+            $.ajax({
+                url: '/' + dataName + '/_design/FAQcouch/_list/cats_as_options/categories?reduce=false',
+                type: 'GET',
+                success: function(data) {
+                	$('#existing-cats').append(data);
+                }
+            });
             $('#category-dialog').dialog('open');
             return false;
     	});
