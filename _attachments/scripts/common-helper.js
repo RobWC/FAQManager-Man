@@ -178,7 +178,8 @@ var FAQ = {
                 if ($('#dialog').dialog('isOpen')) {
                     $('#dialog').dialog('close');
                 };
-                $("div#dialogCategory dialog-cat-sel").empty();
+                $("div#dialogCategory #dialog-cat-sel").remove();
+                $("div#dialogCategory").append('<select id="dialog-cat-sel" size="5" name="ed-cat-sel" class="" multiple="multiple" style="display: none;"></select>');
                 //add categories
                 var options = new Object();
 	   			options.toMultiSelect = true;
