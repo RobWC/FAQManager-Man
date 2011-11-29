@@ -197,7 +197,8 @@ var FAQ = {
          });  
     },
     setupManagement: function(){
-        $("#management-links").append('<a id="addRecord" href=""><img src="images/icons/add-item.png" /></a>',
+        $("#management-links").append('<a id="downloadPdf" href=""><img src="images/icons/download.png" /></a>',
+        							  '<a id="addRecord" href=""><img src="images/icons/add-item.png" /></a>',
         							  '<a id="addCategory" href=""><img src="images/icons/category.png" /></a>').fadeIn('slow');
     },
     setupSearch: function(){
@@ -235,7 +236,7 @@ var FAQ = {
         $('#scrollie').fadeOut('slow',function(){
             $('#scrollie').empty();
             $('#scrollie').fadeIn();
-            $('#scroll-content').height($(window).height() - 60);
+            $('#scroll-content').height($(window).height() - 70);
             $('#scroll-content').toggleClass('overflow');
         });
         $('#query').val('');
@@ -286,7 +287,7 @@ var FAQ = {
                         	//overflow is enabled do nothing
                         } else {
                         	//enable overflow
-                        	$('#scroll-content').height($(window).height() - 60);
+                        	$('#scroll-content').height($(window).height() - 70);
                             $('#scroll-content').toggleClass('overflow');
                         }
                     }
