@@ -19,16 +19,23 @@
         function initWidget() {
             $.couch.session({
                 success : function(r) {
+                    console.log(r);
                     var userCtx = r.userCtx;
                     if (userCtx.name) {
+                        console.log(userCtx);
                         elem.empty();
                         elem.append(loggedIn(r));
-                        if (opts.loggedIn) {opts.loggedIn(userCtx)}
+                        if (opts.loggedIn) {
+                          opts.loggedIn(userCtx)
+                        };
                     } else if (userCtx.roles.indexOf("_admin") != -1) {
-                        elem.html(templates.adminParty);
+                      userCtx.name = "admin";
+                      elem.append(loggedIn(r));
+                      opts.loggedIn(userCtx);
                     } else {
-                        elem.html(templates.loggedOut);
-                        if (opts.loggedOut) {opts.loggedOut()}
+                        if (opts.loggedOut) {
+                          elem.append(opts.loggedOut());
+                        };
                     };
                 }
             });
@@ -38,7 +45,7 @@
             $.couch.login({name:name, password:pass, success:initWidget});
         };
         elem.delegate("a[href=#login]", "click", function() {
-            elem.html(templates.loginForm);
+            //elem.html(templates.loginForm);
             elem.find('input[name="name"]').focus();
         });
         elem.delegate("form.login", "submit", function() {
@@ -52,7 +59,10 @@
     };
     function loggedIn(r) {
         var div = $('<span><span id="username">' + r.userCtx.name + '</span> <a href="#logout">Logout</a></span>');
-        //$('span#username').text(r.userCtx.name); // you can get the user name here
+        return div;
+    }
+    function loggedOut() {
+        var div = $('<span><span id="username">' + 'not logged In' + '</span> <a href="#logout">Logout</a></span>');
         return div;
     }
 })(jQuery);

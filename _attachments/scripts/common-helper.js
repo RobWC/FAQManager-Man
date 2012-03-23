@@ -242,7 +242,6 @@ var FAQ = {
         $('#query').val('');
     },
     handleSubmit: function() {
-    	console.log('handle submit');
         var queryValue = $("#query").val();
         var queryToStore = new Object();
         queryToStore.type = 'query';
@@ -260,23 +259,17 @@ var FAQ = {
             $('#scrollie').fadeOut('slow',function(){
                 $('#scrollie').empty();
                 $('#scrollie').fadeIn();
-              //$.couch.db('queries-store').saveDoc(queryToStore, options);
-                //save search query in the queries dd
-                
-                $.getJSON('/' + dataName + '/_fti/_design/search/complete?q=' + queryValue, function(data) {
-                	console.log('making query');
-                    var rows = new Array();
-                    rows = data.rows;
-                    if (rows == undefined || rows == null || rows.length == 0) {
+                $.getJSON('/_fti/local/faq/_design/search/complete?q=' + queryValue, function(data) {
+                    if (data.rows == undefined || data.rows == null || data.rows.length == 0) {
                         $("#scrollie").append($('<div/>',{id:'no-results'}).append('No Results Found'));
                     } else {
                         var i;
-                        for (i in rows){
-                            var newRecord = new Record(rows[i].id);
+                        for (i in data.rows){
+                            var newRecord = new Record(data.rows[i].id);
                             newRecord.refreshData();
                             if (i == 0) {
                                 $('#scrollie').append(newRecord.toArticle().addClass('first'));
-                            } else if (i == (rows.length - 1)) {
+                            } else if (i == (data.rows.length - 1)) {
                                 $('#scrollie').append(newRecord.toArticle().addClass('last'));
                             } else {
                                 $('#scrollie').append(newRecord.toArticle());
