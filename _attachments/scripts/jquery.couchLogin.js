@@ -19,10 +19,8 @@
         function initWidget() {
             $.couch.session({
                 success : function(r) {
-                    console.log(r);
                     var userCtx = r.userCtx;
                     if (userCtx.name) {
-                        console.log(userCtx);
                         elem.empty();
                         elem.append(loggedIn(r));
                         if (opts.loggedIn) {

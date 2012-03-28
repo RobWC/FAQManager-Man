@@ -101,8 +101,8 @@ var FAQ = {
     	$.getJSON('/'+database+'/_security', function(data){
     		var adminsRoles = data.admins.roles;
     		var adminsNames = data.admins.names;
-    		var readersRoles = data.readers.roles;
-    		var readersNames = data.readers.names;
+    		var readersRoles = data.members.roles;
+    		var readersNames = data.members.names;
     		$.getJSON('/_session', function(data){
     			var currentUserName = data.userCtx.name;
     			var currentUserRoles = data.userCtx.roles;
